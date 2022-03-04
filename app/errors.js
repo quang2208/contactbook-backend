@@ -1,5 +1,5 @@
-class BadRequestError extend Error {
-    constructor(statusCode, message) {
+class BadRequestError extends Error {
+    constructor(statusCode, message){
         super();
         this.statusCode = statusCode;
         this.message = message;
@@ -22,5 +22,5 @@ class ErrorHandler{
 
 module.exports = {
     BadRequestError,
-    errorHandler: new ErrorHandler();
+    errorHandler: new ErrorHandler()
 };
