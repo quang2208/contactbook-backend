@@ -1,19 +1,21 @@
+const { response } = require("express");
+
 class BadRequestError extends Error {
     constructor(statusCode, message){
         super();
-        this.statusCode = statusCode;
-        this.message = message;
+        this.statusCode= statusCode;
+        this.message= message;
     }
 }
 
-class ErrorHandler{
+class ErrorHandler {
     constructor(){
-        this.handlerError = (error, responseStream = null) => {
-            if (responseStream) {
+        this.handleError = (error, responseStream = null) => {
+            if(responseStream) {
                 responseStream.status(error.statusCode || 500).json({
                     message: error.message || "Internal Server Error",
                 });
-            }else{
+            } else {
                 console.log(error);
             }
         };
@@ -22,5 +24,5 @@ class ErrorHandler{
 
 module.exports = {
     BadRequestError,
-    errorHandler: new ErrorHandler()
+    errorHandler: new ErrorHandler(),
 };
